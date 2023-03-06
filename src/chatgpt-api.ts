@@ -137,6 +137,7 @@ export class ChatGPTAPI {
       messageId = uuidv4(),
       timeoutMs,
       onProgress,
+      temperature = this._completionParams.temperature,
       stream = onProgress ? true : false
     } = opts
 
@@ -178,6 +179,7 @@ export class ChatGPTAPI {
         const body = {
           max_tokens: maxTokens,
           ...this._completionParams,
+          temperature,
           messages,
           stream
         }
